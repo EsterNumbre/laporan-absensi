@@ -1,5 +1,5 @@
 <div class="col-md-2">
-    <div class="list-group shadow-sm">
+    <div class="list-group shadow-sm rounded-0">
         <a href="{{ url('dasbor') }}" class="list-group-item list-group-item-action @if(Request::segment(2) == '') bg-primary text-light @endif">
             <i class="fa-solid fa-dashboard"></i> Dasbor
         </a>

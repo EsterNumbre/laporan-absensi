@@ -10,7 +10,7 @@
                 <div class="col-md-10">
                     <div class="row mb-3">
                         <div class="col">
-                            <div class="card shadow-sm">
+                            <div class="card shadow-sm rounded-0">
                                 <div class="card-body">
                                     <h3>Dasbor</h3>
                                     <p class="text-muted">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Error soluta illum asperiores at modi eos.</p>
@@ -21,7 +21,7 @@
                     <!-- .row end -->
                     <div class="row mb-3">
                         <div class="col">
-                            <div class="card bg-primary text-light shadow-sm">
+                            <div class="card bg-primary text-light shadow-sm rounded-0">
                                 <div class="card-body text-center">
                                     <div class="fs-1 fw-bold">
                                         18
@@ -32,7 +32,7 @@
                         </div>
                         <!-- .col end -->
                         <div class="col">
-                            <div class="card bg-primary text-light shadow-sm">
+                            <div class="card bg-primary text-light shadow-sm rounded-0">
                                 <div class="card-body text-center">
                                     <div class="fs-1 fw-bold">
                                         15
@@ -43,7 +43,7 @@
                         </div>
                         <!-- .col end -->
                         <div class="col">
-                            <div class="card bg-primary text-light shadow-sm">
+                            <div class="card bg-primary text-light shadow-sm rounded-0">
                                 <div class="card-body text-center">
                                     <div class="fs-1 fw-bold">
                                         3

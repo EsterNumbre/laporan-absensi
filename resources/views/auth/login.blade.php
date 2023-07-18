@@ -27,7 +27,7 @@
             <section class="py-5">
                 <div class="container px-5">
                     <!-- Contact form-->
-                    <div class="bg-light rounded-3 py-5 px-4 px-md-5 mb-5">
+                    <div class="py-5 px-4 px-md-5 mb-5">
                         <div class="text-center mb-5">
                             <a href="{{ url('/') }}" class="link-primary text-decoration-none">
                                 <div class="py-5 center col-md-8 mx-auto">
@@ -53,7 +53,7 @@
                                         <div class="mb-3">
                                             <label for="alamatEmail" class="form-label">Alamat Email</label>
                                             <input type="email" id="alamatEmail"
-                                                class="form-control @error('email') is-invalid @enderror" name="email"
+                                                class="form-control rounded-0 @error('email') is-invalid @enderror" name="email"
                                                 value="{{ old('email') }}" placeholder="Masukan alamat email" required
                                                 autocomplete="email" autofocus>
                                             @error('email')
@@ -68,11 +68,8 @@
                                             <label for="kataSandi" class="form-label">Kata Sandi</label>
                                             <div class="input-group input-group-merge">
                                                 <input type="password" id="kataSandi"
-                                                    class="form-control @error('password') is-invalid @enderror" name="password"
+                                                    class="form-control rounded-0 @error('password') is-invalid @enderror" name="password"
                                                     placeholder="Masukan kata sandi" required autocomplete="current-password">
-                                                <div class="input-group-text" data-password="false">
-                                                    <span class="password-eye"></span>
-                                                </div>
                                                 @error('password')
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $message }}</strong>
@@ -83,8 +80,8 @@
                                         <!-- group item end -->
         
                                         <div class="d-block">
-                                            <button class="btn btn-lg btn-primary w-100" type="submit">
-                                                Masuk
+                                            <button class="btn btn-lg btn-primary w-100 rounded-0" type="submit">
+                                                <i class="fa-solid fa-sign-in"></i> Masuk
                                             </button>
                                         </div>
         
