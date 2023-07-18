@@ -68,7 +68,7 @@
                                                         <form action="{{ url(Request::segment(1) .'/'. Request::segment(2), $data->id ) }}" method="POST">
                                                         @csrf
                                                         @method('DELETE')
-                                                            <button href="" class="btn btn-outline-dark rounded-0">
+                                                            <button type="submit" class="btn btn-outline-dark rounded-0 show_confirm">
                                                                 <i class="fa-solid fa-trash"></i>
                                                             </button>
                                                         </form>
@@ -94,3 +94,37 @@
     </section>
 
   @stop
+
+
+@push('script-footer')
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script type="text/javascript">
+
+     $('.show_confirm').click(function(event) {
+          var form =  $(this).closest("form");
+          event.preventDefault();
+          swal.fire({
+            title: 'Anda Yakin?',
+            text: "Data akan terhapus permanen!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            cancelButtonText: 'Batal',
+            confirmButtonText: 'Hapus Permanen!'
+          })
+          .then((result) => {
+            if (result.isConfirmed) {
+                form.submit();
+                Swal.fire(
+                'Terhapus!',
+                'Data Anda telah terhapus.'
+                )
+            }
+        });
+      });
+
+</script>
+@endpush

@@ -169,7 +169,7 @@ class PegawaiController extends Controller
         // melakukan proses ubah atau update
         $data->update();
 
-        alert()->success('Berhasil', 'Data telah ditambahkan')->autoclose(1100);
+        alert()->success('Berhasil', 'Data telah diubah')->autoclose(1100);
         return redirect('dasbor/pegawai/detail/' . Pegawai::find($data->id)->id);
     }
 
@@ -179,8 +179,17 @@ class PegawaiController extends Controller
      * @param  \App\Models\Pegawai  $pegawai
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Pegawai $pegawai)
+    public function destroy($id)
     {
-        echo "destroy";
+        $data = Pegawai::find($id);
+        $path = public_path('assets/img/pegawai/' . $data->foto_profil);
+
+        if (file_exists($path)) {
+            File::delete($path);
+        }
+
+        $data->forceDelete();
+        alert()->success('Terhapus!', 'Data sudah terhapus.')->autoclose(1100);
+        return redirect()->back();
     }
 }
