@@ -61,11 +61,13 @@
                                                         <a href="{{ url(Request::segment(1) .'/'. Request::segment(2)  .'/detail', $data->id ) }}" class="btn btn-dark rounded-0">
                                                             <i class="fa-solid fa-file"></i>
                                                         </a>
-                                                        <a href="{{ url(Request::segment(1) .'/'. Request::segment(2) .'/edit', $data->id ) }}" class="btn btn-outline-dark rounded-0">
+                                                        <a href="{{ url(Request::segment(1) .'/'. Request::segment(2) .'/ubah', $data->id ) }}" class="btn btn-outline-dark rounded-0">
                                                             <i class="fa-solid fa-edit"></i>
                                                         </a>
 
-                                                        <form action="{{ url(Request::segment(1) .'/'. Request::segment(2) .'/delete', $data->id ) }}">
+                                                        <form action="{{ url(Request::segment(1) .'/'. Request::segment(2), $data->id ) }}" method="POST">
+                                                        @csrf
+                                                        @method('DELETE')
                                                             <button href="" class="btn btn-outline-dark rounded-0">
                                                                 <i class="fa-solid fa-trash"></i>
                                                             </button>

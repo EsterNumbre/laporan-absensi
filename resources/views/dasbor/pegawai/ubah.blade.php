@@ -21,8 +21,9 @@
                     <!-- .row end -->
                     <div class="row mb-3">
                         <div class="col">
-                            <form action="{{ url('dasbor/pegawai') }}" enctype="multipart/form-data" method="POST">
+                            <form action="{{ url('dasbor/pegawai', $data->id) }}" enctype="multipart/form-data" method="POST">
                             @csrf
+                            @method('put')
                                 <div class="card rounded-0">
                                     <div class="card-body">
                                         
@@ -32,7 +33,7 @@
                                                 <!-- form group start -->
                                                 <div class="mb-3">
                                                     <label for="nama_lengkap" class="form-label">Nama Lengkap <span class="text-danger" title="bagian ini wajib dilengkapi" role="button">*</span></label>
-                                                    <input type="text" name="nama_lengkap" id="nama_lengkap" value="{{ old('nama_lengkap') ?? ''  }}" class="form-control rounded-0">
+                                                    <input type="text" name="nama_lengkap" id="nama_lengkap" value="{{ old('nama_lengkap') ?? $data->nama_lengkap  }}" class="form-control rounded-0">
                                                     
                                                     @if ($errors->has('nama_lengkap'))
                                                         <span class="text-danger" role="alert">
@@ -48,28 +49,28 @@
                                                 <!-- form group start -->
                                                 <div class="mb-3">
                                                     <label for="nip" class="form-label">NIP</label>
-                                                    <input type="text" name="nip" id="nip" value="{{ old('nip') ?? ''  }}" class="form-control rounded-0">
+                                                    <input type="text" name="nip" id="nip" value="{{ old('nip') ?? $data->nip  }}" class="form-control rounded-0">
                                                 </div>
                                                 <!-- form group end -->
 
                                                 <!-- form group start -->
                                                 <div class="mb-3">
                                                     <label for="no_hp" class="form-label">Nomor HP</label>
-                                                    <input type="text" name="no_hp" id="no_hp" value="{{ old('no_hp') ?? ''  }}" class="form-control rounded-0">
+                                                    <input type="text" name="no_hp" id="no_hp" value="{{ old('no_hp') ?? $data->no_hp  }}" class="form-control rounded-0">
                                                 </div>
                                                 <!-- form group end -->
 
                                                 <!-- form group start -->
                                                 <div class="mb-3">
                                                     <label for="alamat_email" class="form-label">Alamat Email</label>
-                                                    <input type="text" name="alamat_email" id="alamat_email" value="{{ old('alamat_email') ?? '' }}" class="form-control rounded-0">
+                                                    <input type="text" name="alamat_email" id="alamat_email" value="{{ old('alamat_email') ?? $data->alamat_email }}" class="form-control rounded-0">
                                                 </div>
                                                 <!-- form group end -->
 
                                                 <!-- form group start -->
                                                 <div class="mb-3">
                                                     <label for="deskripsi" class="form-label">Deskripsi</label>
-                                                    <textarea name="deskripsi" id="deskripsi" cols="30" rows="3" class="form-control rounded-0">{{ old('deskripsi') ?? '' }}</textarea>
+                                                    <textarea name="deskripsi" id="deskripsi" cols="30" rows="3" class="form-control rounded-0">{{ old('deskripsi') ?? $data->deskripsi }}</textarea>
                                                 </div>
                                                 <!-- form group end -->
 
@@ -81,7 +82,11 @@
                                                 <div class="mb-3">
                                                     
                                                     <div class="mb-2">
+                                                        @if(!empty($data->foto_profil))
+                                                        <img src="{{ asset('assets/img/pegawai/' . $data->foto_profil) }}" alt="Gambar" id="preview-gambar" class="img-thumbnail img-fluid">
+                                                        @else 
                                                         <img src="{{ asset('assets/img/pegawai/00.jpg') }}" alt="Gambar" id="preview-gambar" class="img-thumbnail img-fluid">
+                                                        @endif
                                                     </div>
 
                                                     <label for="foto_profil" class="form-label d-block">Foto Profil</label>
@@ -103,7 +108,7 @@
 
                                             <div class="row">
                                                 <div class="col-md-6">
-                                                    <h5 class="p-2 mb-3 bg-light"><i class="fa-solid fa-key"></i> Kata Sandi</h5>
+                                                    <h5 class="p-2 mb-3 bg-light"><i class="fa-solid fa-key"></i> Ganti Kata Sandi</h5>
 
                                                     <!-- form group start -->
                                                     <div class="mb-3">

@@ -80,15 +80,11 @@
 
                                                 <!-- form group start -->
                                                 <div class="mb-3">
-                                                    
-                                                    <div class="mb-2">
-                                                        @if(!empty($data->foto_profil))
-                                                        <img src="{{ asset('assets/img/pegawai/' . $data->foto_profil) }}" alt="Gambar" id="preview-gambar" class="img-thumbnail img-fluid">
-                                                        @else 
-                                                        <img src="{{ asset('assets/img/pegawai/00.jpg') }}" alt="Gambar" id="preview-gambar" class="img-thumbnail img-fluid">
-                                                        @endif
-                                                    </div>
-
+                                                    @if(!empty($data->foto_profil))
+                                                    <img src="{{ asset('assets/img/pegawai/' . $data->foto_profil) }}" alt="Gambar" id="preview-gambar" class="img-thumbnail img-fluid">
+                                                    @else 
+                                                    <img src="{{ asset('assets/img/pegawai/00.jpg') }}" alt="Gambar" id="preview-gambar" class="img-thumbnail img-fluid">
+                                                    @endif
                                                 </div>
                                                 <!-- form group end -->
 

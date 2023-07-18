@@ -64,7 +64,7 @@ class PegawaiController extends Controller
         $data->nip = $request->nip;
         $data->no_hp = $request->no_hp;
         $data->deskripsi = $request->deskripsi;
-        $data->email = $request->email;
+        $data->alamat_email = $request->alamat_email;
 
         // foto profil creation
         if (isset($request->foto_profil)) {
@@ -111,9 +111,10 @@ class PegawaiController extends Controller
      * @param  \App\Models\Pegawai  $pegawai
      * @return \Illuminate\Http\Response
      */
-    public function edit(Pegawai $pegawai)
+    public function edit($id)
     {
-        echo "edit";
+        $data = Pegawai::where('id', $id)->first();
+        return view('dasbor.pegawai.ubah', compact('data'));
     }
 
     /**
@@ -123,9 +124,53 @@ class PegawaiController extends Controller
      * @param  \App\Models\Pegawai  $pegawai
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Pegawai $pegawai)
+    public function update(Request $request, $id)
     {
-        echo "update";
+
+        $request->validate(
+            [
+                'nama_lengkap' => 'required',
+            ],
+            [
+                'nama_lengkap.required' => 'Bagian ini wajib dilengkapi',
+            ]
+        );
+
+        $data = Pegawai::find($id);
+
+        // biography
+        $data->nama_lengkap = $request->nama_lengkap;
+        $data->nip = $request->nip;
+        $data->no_hp = $request->no_hp;
+        $data->deskripsi = $request->deskripsi;
+        $data->alamat_email = $request->alamat_email;
+
+        // foto profil creation
+        if (isset($request->foto_profil)) {
+
+            // create file name
+            $fileName = $request->foto_profil->getClientOriginalName();
+
+            // crate file path
+            $path = public_path('assets/img/pegawai/' . $data->foto_profil);
+
+            // delete file if exist
+            if (file_exists($path)) {
+                File::delete($path);
+            }
+
+            // adding file name into database variable
+            $data->foto_profil = $fileName;
+
+            // move file into folder path with the file name
+            $request->foto_profil->move(public_path('assets/img/pegawai'), $fileName);
+        }
+
+        // melakukan proses ubah atau update
+        $data->update();
+
+        alert()->success('Berhasil', 'Data telah ditambahkan')->autoclose(1100);
+        return redirect('dasbor/pegawai/detail/' . Pegawai::find($data->id)->id);
     }
 
     /**
