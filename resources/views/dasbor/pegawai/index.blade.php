@@ -30,6 +30,17 @@
                                         </a>
                                     </div>
 
+                                    <div class="mb-3">
+                                        <form action="{{ url(Request::segment(1) . '/' . Request::segment(2)) }}" method="GET">
+                                                <div class="input-group mb-3">
+                                                    <input type="search" name="s" class="form-control rounded-0" placeholder="Cari nama {{ Request::segment(2) }}" value="{{ request()->s ?? '' }}">
+                                                    <button type="submit" class="btn btn-primary rounded-0">
+                                                        <div class="fa-solid fa-search me-1"></div> Cari
+                                                    </button>
+                                                </div>
+                                            </form>
+                                    </div>
+
                                     <!-- table start -->
                                     <div class="table-responsive">
                                         <table class="table table-bordered">
@@ -44,7 +55,7 @@
                                             </thead>
                                             <tbody>
 
-                                                @foreach ($datas as $data)
+                                                @forelse($datas as $data)
 
                                                 <tr>
                                                     <td>{{ ++$i }}</td> 
@@ -75,7 +86,18 @@
                                                     </td>
                                                 </tr>
                                                     
-                                                @endforeach
+                                                @empty
+
+                                                <tr>
+                                                    <td colspan="5" class="p-5">
+                                                        <i class="fa-solid fas fa-exclamation-circle"></i> Data tidak ditemukan. 
+                                                        <a href="{{ url(Request::segment(1) . '/' . Request::segment(2)) }}" class="text-decoration-none fw-bold">
+                                                            Muat ulang halaman
+                                                        </a>
+                                                    </td>
+                                                </tr>
+
+                                                @endforelse
                                             </tbody>
                                         </table>
                                     </div>
