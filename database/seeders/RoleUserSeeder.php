@@ -40,29 +40,29 @@ class RoleUserSeeder extends Seeder
         | ==========================================
         */
 
-        // ADMIN USERS
-        $adminMelanTabuni = User::create([
-            'name' => 'Melan Tabuni',
-            'slug' => 'melan-tabuni',
+        // ADMIN
+        $adminEsterNumbre = User::create([
+            'name' => 'Ester Numbre',
+            'slug' => 'ester-numbre',
             'job_title' => 'Information System Student',
-            'picture' => 'melan-tabuni-200x200.jpg',
-            'email' => 'melan.tabuni@gmail.com',
-            'password' => bcrypt('melan.tabuni@gmail.com'),
+            'picture' => 'ester-numbre-200x200.jpg',
+            'email' => 'ester.numbre@gmail.com',
+            'password' => bcrypt('ester.numbre@gmail.com'),
             'status' => 'Publish',
         ]);
-        $adminMelanTabuni->assignRole($adminRole);
+        $adminEsterNumbre->assignRole($adminRole);
 
-        // GUEST USERS
-        $adminMelanTabuni = User::create([
-            'name' => 'Guest',
-            'slug' => 'guest',
+        // GUEST
+        $guestUser = User::create([
+            'name' => 'Guest 1',
+            'slug' => 'guest-1',
             'job_title' => 'Just a guest here',
             'picture' => '00.jpg',
-            'email' => 'guest@gmail.com',
-            'password' => bcrypt('guest@gmail.com'),
+            'email' => 'guest1@gmail.com',
+            'password' => bcrypt('guest1@gmail.com'),
             'status' => 'Publish',
         ]);
-        $adminMelanTabuni->assignRole($guestRole);
+        $guestUser->assignRole($guestRole);
 
 
 

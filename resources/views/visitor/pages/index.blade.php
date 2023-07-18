@@ -1,45 +1,23 @@
 @extends('visitor.layout.app')
 @section('content')
 
-<!-- Fitur Dasar section-->
-<section class="py-5" id="fitur-dasar">
-    <div class="container px-5 my-5">
-        <div class="row gx-5">
-            <div class="col-lg-4 mb-5 mb-lg-0"><h2 class="fw-bolder mb-0">Menampilkan data penyebaran endemik per kategori</h2></div>
-            <div class="col-lg-8">
-                <div class="row gx-5 row-cols-1 row-cols-md-2">
-                    <div class="col mb-5 h-100">
-                        <div class="feature bg-primary bg-gradient text-white rounded-3 mb-3">
-                            <i class="fa-solid fa-table"></i>
-                        </div>
-                        <h2 class="h5">Data per Kelurahan</h2>
-                        <p class="mb-0">Paragraph of text beneath the heading to explain the heading. Here is just a bit more text.</p>
-                    </div>
-                    <div class="col mb-5 h-100">
-                        <div class="feature bg-primary bg-gradient text-white rounded-3 mb-3">
-                            <i class="fa-solid fa-table"></i>
-                        </div>
-                        <h2 class="h5">Data per RW</h2>
-                        <p class="mb-0">Paragraph of text beneath the heading to explain the heading. Here is just a bit more text.</p>
-                    </div>
-                    <div class="col mb-5 mb-md-0 h-100">
-                        <div class="feature bg-primary bg-gradient text-white rounded-3 mb-3">
-                            <i class="fa-solid fa-map-marker"></i>
-                        </div>
-                        <h2 class="h5">Titik Kordinat</h2>
-                        <p class="mb-0">Paragraph of text beneath the heading to explain the heading. Here is just a bit more text.</p>
-                    </div>
-                    <div class="col h-100">
-                        <div class="feature bg-primary bg-gradient text-white rounded-3 mb-3">
-                            <i class="fa-solid fa-chart-bar"></i>
-                        </div>
-                        <h2 class="h5">Data Melalui Grafik</h2>
-                        <p class="mb-0">Paragraph of text beneath the heading to explain the heading. Here is just a bit more text.</p>
+<header class="bg-primary py-5" style="background-image: url('{{ asset('assets/img/bg/tech-1.jpg') }}');background-size:cover;">
+    <div class="container px-5">
+        <div class="row gx-5 align-items-center justify-content-center">
+            <div class="col-xl-5 col-xxl-6 d-none d-xl-block text-center"><img class="img-fluid rounded-3 my-5" src="{{ asset('assets/img/header/header-1.png') }}" alt="logo header" /></div>
+            <div class="col-lg-8 col-xl-7 col-xxl-6">
+                <div class="my-5 text-center text-xl-start">
+                    <h1 class="display-5 fw-bolder mb-2 text-white">{{ env('APP_NAME') ?? '' }}</h1>
+                    <p class="lead fw-normal text-white-50 mb-4">
+                        {{ env('APP_DESCRIPTION') ?? '' }}
+                    </p>
+                    <div class="d-grid gap-3 d-sm-flex justify-content-sm-center justify-content-xl-start">
+                        <a class="btn btn-primary btn-lg px-4 me-sm-3" href="{{ url('login') }}">Login</a>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</section>
+</header>
 
 @stop

@@ -29,16 +29,19 @@
                     <!-- Contact form-->
                     <div class="bg-light rounded-3 py-5 px-4 px-md-5 mb-5">
                         <div class="text-center mb-5">
-                            <a href="{{ url('/') }}" class="link-success text-decoration-none">
-                                <div class="py-5 d-flex justify-content-center gap-2 col-md-6 mx-auto">
-                                    <div class="bg-success bg-gradient text-white rounded-3 mb-3">
-                                        <img src="{{ asset('assets/img/logo/logo-puskesmas.png') }}" alt="Logo Puskesmas" height="100px" class="rounded p-2 bg-white shadow">
+                            <a href="{{ url('/') }}" class="link-primary text-decoration-none">
+                                <div class="py-5 center col-md-8 mx-auto">
+                                    <div class="bg-gradient text-white rounded-3 mb-3 d-block">
+                                        <img src="{{ asset('assets/img/logo/logo-kominfo.png') }}" alt="Logo header" height="100px" class="rounded p-2 bg-white shadow">
                                     </div>
-                                    <h5 class="h3 col-8 text-start">{{ env('APP_NAME') ?? '' }}</h5>
+                                    <div>
+                                        <h5 class="h1 d-block">{{ env('APP_NAME') ?? '' }}</h5>
+                                        <p class="d-block text-uppercase">{{ env('APP_DESCRIPTION') ?? '' }}</p>
+                                    </div>
                                 </div>
                             </a>
 
-                            <h1 class="fw-bolder">Login</h1>
+                            <h1 class="fw-bolder text-primary display-2">Login</h1>
                             <p class="lead fw-normal text-muted mb-0">Masukan alamat email dan kata sandi Anda!</p>
                         </div>
                         <div class="row gx-5 justify-content-center">
@@ -80,7 +83,7 @@
                                         <!-- group item end -->
         
                                         <div class="d-block">
-                                            <button class="btn btn-lg btn-success w-100" type="submit">
+                                            <button class="btn btn-lg btn-primary w-100" type="submit">
                                                 Masuk
                                             </button>
                                         </div>
