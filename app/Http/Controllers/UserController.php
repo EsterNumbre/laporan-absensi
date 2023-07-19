@@ -22,7 +22,7 @@ class UserController extends Controller
 
             [function ($query) {
                 if (($s = request()->s)) {
-                    $query->orWhere('name', 'LIKE', '%' . $s . '%')
+                    $query->orWhere('nama_lengkap', 'LIKE', '%' . $s . '%')
                         // ->orWhere('subjudul', 'LIKE', '%' . $s . '%')
                         ->get();
                 }

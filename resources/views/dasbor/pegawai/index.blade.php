@@ -2,12 +2,13 @@
 @section('content')
 
     <section class="py-5">
-        <div class="container">
+        <div class="container-fluid">
             <div class="row">
                 @include('dasbor.partials.left-sidebar')
                 <!-- .col end -->
 
                 <div class="col-md-10">
+
                     <div class="row mb-3">
                         <div class="col">
                             <div class="card rounded-0">
@@ -19,6 +20,7 @@
                         </div>
                     </div>
                     <!-- .row end -->
+
                     <div class="row mb-3">
                         <div class="col">
                             <div class="card rounded-0">
@@ -110,6 +112,7 @@
 
                 </div>
                 <!-- .col end -->
+
             </div>
             <!-- .row end -->
         </div>

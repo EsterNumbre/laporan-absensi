@@ -22,10 +22,10 @@ class UserController extends Controller
     public function index(Request $request)
     {
         $datas = User::where([
-            ['name', '!=', Null],
+            ['nama_lengkap', '!=', Null],
             [function ($query) use ($request) {
                 if (($s = $request->s)) {
-                    $query->orWhere('name', 'LIKE', '%' . $s . '%')
+                    $query->orWhere('nama_lengkap', 'LIKE', '%' . $s . '%')
                         ->orWhere('email', 'LIKE', '%' . $s . '%')
                         ->get();
                 }

@@ -2,11 +2,13 @@
 
 namespace Database\Seeders;
 
+use App\Models\User;
 use App\Models\Pegawai;
 use Carbon\Carbon;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Spatie\Permission\Models\Role;
 
 class PegawaiSeeder extends Seeder
 {
@@ -17,6 +19,30 @@ class PegawaiSeeder extends Seeder
      */
     public function run()
     {
+        
+
+        // ROLE : PEGAWAI
+        $pegawaiRole = Role::create(
+            [
+                'guard_name' => 'web',
+                'name' => 'pegawai',
+                'display_name' => 'Pegawai',
+            ]
+        );        
+
+        // Pegawai
+        $pegawaiUser = User::create(
+            [
+                'nama_lengkap' => 'Pegawai Contoh',
+                'slug' => 'pegawai-contoh',
+                'foto_profil' => '00.jpg',
+                'email' => 'pegawai.contoh@gmail.com',
+                'password' => bcrypt('pegawai.contoh@gmail.com'),
+                'status' => 'Publish',
+            ]
+        );
+        $pegawaiUser->assignRole($pegawaiRole);        
+
         Pegawai::create(
             [
 
