@@ -18,7 +18,10 @@ class UserController extends Controller
     // INDEX
     public function index(Request $request)
     {
-        $data = User::where([
+        $data = User::whereHas('roles',function($q){
+            $q->where('name','administrator');
+        })
+        ->where([
 
             [function ($query) {
                 if (($s = request()->s)) {
@@ -74,7 +77,6 @@ class UserController extends Controller
     // CREATE
     public function create()
     {
-        // $roles = Role::pluck('name', 'name')->all();
         $roles  = Role::get();
         return view('dasbor.admin.users.create', compact('roles'));
     }
@@ -129,9 +131,12 @@ class UserController extends Controller
                 $account->picture = $posterName;
 
                 $account->save();
+                
                 $request->picture->move(public_path('gambar/pengguna'), $posterName);
                 $account->assignRole($request->peran);
+
                 Alert::toast('Pengguna Berhasil dibuat!', 'success');
+
                 if ($account->status == 'Publish') {
                     return redirect()->route('dasbor.pengguna');
                 } else {

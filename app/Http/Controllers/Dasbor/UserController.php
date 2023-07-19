@@ -21,7 +21,9 @@ class UserController extends Controller
     // INDEX
     public function index(Request $request)
     {
-        $datas = User::where([
+        $datas = User::whereHas('roles',function($q){
+            $q->where('name','administrator');
+        })->where([
             ['nama_lengkap', '!=', Null],
             [function ($query) use ($request) {
                 if (($s = $request->s)) {
@@ -30,11 +32,11 @@ class UserController extends Controller
                         ->get();
                 }
             }]
-        ])->where('status',1)->latest()->paginate(5);
+        ])->where('status','Publish')->latest()->paginate(5);
 
         $jumlahtrash = User::onlyTrashed()->count();
-        $jumlahdraft = User::where('status', 0)->count();
-        $datapublish = User::where('status', 1)->count();
+        $jumlahdraft = User::where('status', 'Draft')->count();
+        $datapublish = User::where('status', 'Publish')->count();
         return view('dasbor.pengguna.index',compact('datas','jumlahtrash','jumlahdraft','datapublish'))->with('i', ($request->input('page', 1) - 1) * 5);
 
     }

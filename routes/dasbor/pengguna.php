@@ -19,25 +19,21 @@ use Illuminate\Support\Facades\Route;
             Route::get('pengguna','index')
                 ->name('dasbor.pengguna');
 
-            // draft
-            Route::get('pengguna/draft','draft')
-                ->name('dasbor.pengguna.draft');
-
-            // create
-            Route::get('pengguna/create','create')
-                ->name('dasbor.pengguna.create');
+            // create / tambah
+            Route::get('pengguna/tambah','create')
+                ->name('dasbor.pengguna.tambah');
 
             // store
             Route::post('pengguna','store')
                 ->name('dasbor.pengguna.store');
 
-            // show
+            // show / detail
             Route::get('pengguna/{slug}/detail','show')
-                ->name('dasbor.pengguna.show');
+                ->name('dasbor.pengguna.detail');
 
-            // edit
-            Route::get('pengguna/{slug}/edit','edit')
-                ->name('dasbor.pengguna.edit');
+            // edit / ubah
+            Route::get('pengguna/{slug}/ubah','edit')
+                ->name('dasbor.pengguna.ubah');
 
             // update
             Route::put('pengguna/{id}','update')
@@ -46,18 +42,6 @@ use Illuminate\Support\Facades\Route;
             // destroy
             Route::delete('pengguna/{id}','destroy')
                 ->name('dasbor.pengguna.destroy');
-
-            // trash
-            Route::get('pengguna/trash','trash')
-                ->name('dasbor.pengguna.trash');
-
-            // restore
-            Route::post('pengguna/restore/{id}','restore')
-                ->name('dasbor.pengguna.restore');
-
-            // delete
-            Route::delete('pengguna/delete/{id}','delete')
-                ->name('dasbor.pengguna.delete');
 
         });
     });

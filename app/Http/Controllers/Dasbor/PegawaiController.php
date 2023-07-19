@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Dasbor;
 use App\Http\Controllers\Controller;
 use App\Models\Pegawai;
+use App\Models\User;
+use Spatie\Permission\Models\Role;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\File;
@@ -16,7 +18,9 @@ class PegawaiController extends Controller
      */
     public function index()
     {
-        $datas = Pegawai::where([
+        $datas = User::whereHas('roles',function($q){
+            $q->where('name','pegawai');
+        })->where([
             ['nama_lengkap', '!=', Null],
             [function ($query) {
                 if (($s = request()->s)) {
@@ -24,7 +28,6 @@ class PegawaiController extends Controller
                 }
             }]
         ])->orderBy('nama_lengkap', 'asc')->paginate(5);
-        $jumlahtrash = Pegawai::count();
 
         return view('dasbor.pegawai.index', compact('datas'))->with('i', (request()->input('page', 1) - 1) * 5);
     }
@@ -51,20 +54,29 @@ class PegawaiController extends Controller
         $request->validate(
             [
                 'nama_lengkap' => 'required',
+                'email' => 'required|email|unique:users,email',
+                'password' => 'required|same:password_confirmation',
             ],
             [
                 'nama_lengkap.required' => 'Bagian ini wajib dilengkapi',
+                'email.required' => 'Bagian ini wajib dilengkapi',
+                'email.email' => 'Alamat email tidak sesuai format',
+                'email.unique' => 'Alamat email sudah terdaftar',
+                'password.required' => 'Kata sandi tidak boleh kosong',
+                'password.same' => 'Kata sandi tidak sama',
             ]
         );
 
-        $data = new Pegawai();
+        $data = new User();
 
         // biography
         $data->nama_lengkap = $request->nama_lengkap;
+        $data->email = $request->email;
+        $data->email_verified_at = now();
         $data->nip = $request->nip;
         $data->no_hp = $request->no_hp;
         $data->deskripsi = $request->deskripsi;
-        $data->alamat_email = $request->alamat_email;
+        $data->password = bcrypt($request->password);
 
         // foto profil creation
         if (isset($request->foto_profil)) {
@@ -87,10 +99,11 @@ class PegawaiController extends Controller
             $request->foto_profil->move(public_path('assets/img/pegawai'), $fileName);
         }
 
+        $data->assignRole('pegawai');
         $data->save();
 
         alert()->success('Berhasil', 'Data telah ditambahkan')->autoclose(1100);
-        return redirect('dasbor/pegawai/detail/' . Pegawai::find($data->id)->id);
+        return redirect('dasbor/pegawai/detail/' . User::find($data->id)->id);
     }
 
     /**
@@ -101,7 +114,7 @@ class PegawaiController extends Controller
      */
     public function show($id)
     {
-        $data = Pegawai::where('id', $id)->first();
+        $data = User::where('id', $id)->first();
         return view('dasbor.pegawai.detail', compact('data'));
     }
 
@@ -113,7 +126,7 @@ class PegawaiController extends Controller
      */
     public function edit($id)
     {
-        $data = Pegawai::where('id', $id)->first();
+        $data = User::where('id', $id)->first();
         return view('dasbor.pegawai.ubah', compact('data'));
     }
 
@@ -136,14 +149,13 @@ class PegawaiController extends Controller
             ]
         );
 
-        $data = Pegawai::find($id);
+        $data = User::find($id);
 
         // biography
         $data->nama_lengkap = $request->nama_lengkap;
         $data->nip = $request->nip;
         $data->no_hp = $request->no_hp;
         $data->deskripsi = $request->deskripsi;
-        $data->alamat_email = $request->alamat_email;
 
         // foto profil creation
         if (isset($request->foto_profil)) {
@@ -170,7 +182,7 @@ class PegawaiController extends Controller
         $data->update();
 
         alert()->success('Berhasil', 'Data telah diubah')->autoclose(1100);
-        return redirect('dasbor/pegawai/detail/' . Pegawai::find($data->id)->id);
+        return redirect('dasbor/pegawai/detail/' . User::find($data->id)->id);
     }
 
     /**

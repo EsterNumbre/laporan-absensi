@@ -60,7 +60,7 @@
                                                 <div class="mb-3">
                                                     <label class="form-label">Alamat Email</label>
                                                     <div class="border-bottom pb-3 fs-4">
-                                                        {{ $data->alamat_email ?? '' }}
+                                                        {{ $data->email ?? '' }}
                                                     </div>
                                                 </div>
                                                 <!-- item group end -->
@@ -100,7 +100,7 @@
                                             class="btn btn-outline-dark rounded-0">
                                             <i class="fa-solid fa-arrow-left"></i> ke Halaman Pegawai
                                         </a>
-                                        <a href="{{ url(Request::segment(1) .'/'. Request::segment(2).'/ubah', $data->id) }}" 
+                                        <a href="{{ url(Request::segment(1) .'/'. Request::segment(2).'/ubah', Request::segment(4)) }}" 
                                             class="btn btn-dark rounded-0">
                                             <i class="fa-solid fa-edit"></i> Ubah
                                         </a>

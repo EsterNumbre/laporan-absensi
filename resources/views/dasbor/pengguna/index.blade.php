@@ -27,20 +27,20 @@
                                 <div class="card-body">
 
                                     <div class="mb-3">
-                                        <a href="{{ url('dasbor/pegawai/tambah') }}" class="btn btn-dark rounded-0">
+                                        <a href="{{ url('dasbor/pengguna/tambah') }}" class="btn btn-dark rounded-0">
                                             <i class="fa-solid fa-plus"></i> Tambah
                                         </a>
                                     </div>
 
                                     <div class="mb-3">
                                         <form action="{{ url(Request::segment(1) . '/' . Request::segment(2)) }}" method="GET">
-                                                <div class="input-group mb-3">
-                                                    <input type="search" name="s" class="form-control rounded-0" placeholder="Cari nama {{ Request::segment(2) }}" value="{{ request()->s ?? '' }}">
-                                                    <button type="submit" class="btn btn-primary rounded-0">
-                                                        <div class="fa-solid fa-search me-1"></div> Cari
-                                                    </button>
-                                                </div>
-                                            </form>
+                                            <div class="input-group mb-3">
+                                                <input type="search" name="s" class="form-control rounded-0" placeholder="Cari nama {{ Request::segment(2) }}" value="{{ request()->s ?? '' }}">
+                                                <button type="submit" class="btn btn-primary rounded-0">
+                                                    <div class="fa-solid fa-search me-1"></div> Cari
+                                                </button>
+                                            </div>
+                                        </form>
                                     </div>
 
                                     <!-- table start -->
@@ -60,15 +60,19 @@
                                                 @forelse($datas as $data)
 
                                                 <tr>
-                                                    <td>{{ ++$i }}</td> 
+                                                    <td>{{ ++$i }}</td>
                                                     <td width="150px">
-                                                        <img src="{{ asset('assets/img/pengguna/' . $data->foto_profil ) }}" alt="foto profil" width="100%">
-                                                    </td> 
-                                                    <td>
-                                                        {{ $data->nama_lengkap ?? '' }} 
+                                                        @if (!$data->foto_profil)
+                                                        <img src="{{ asset('assets/img/pegawai/00.jpg') }}" alt="foto profil" width="100%">
+                                                        @else
+                                                        <img src="{{ asset('assets/img/pegawai/' . $data->foto_profil ) }}" alt="foto profil" width="100%">
+                                                        @endif
                                                     </td>
                                                     <td>
-                                                        {{ $data->alamat_email ?? '' }}
+                                                        {{ $data->nama_lengkap }}
+                                                    </td>
+                                                    <td>
+                                                        {{ $data->email}}
                                                     </td>
                                                     <td class="d-flex gap-1">
                                                         <a href="{{ url(Request::segment(1) .'/'. Request::segment(2)  .'/detail', $data->id ) }}" class="btn btn-dark rounded-0">
@@ -87,12 +91,12 @@
                                                         </form>
                                                     </td>
                                                 </tr>
-                                                    
+
                                                 @empty
 
                                                 <tr>
                                                     <td colspan="5" class="p-5">
-                                                        <i class="fa-solid fas fa-exclamation-circle"></i> Data tidak ditemukan. 
+                                                        <i class="fa-solid fas fa-exclamation-circle"></i> Data tidak ditemukan.
                                                         <a href="{{ url(Request::segment(1) . '/' . Request::segment(2)) }}" class="text-decoration-none fw-bold">
                                                             Muat ulang halaman
                                                         </a>
@@ -105,6 +109,16 @@
                                     </div>
                                     <!-- table end -->
                                 </div>
+                                <!-- .card-body end -->
+
+                                @if($datas->hasPages())
+                                
+                                <div class="card-footer">
+                                    {{ $datas->links() }}
+                                </div>
+                                <!-- .card-footer end -->
+
+                                @endif
                             </div>
                         </div>
                     </div>

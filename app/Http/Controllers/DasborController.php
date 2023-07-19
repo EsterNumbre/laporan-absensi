@@ -15,7 +15,7 @@ class DasborController extends Controller
         if(Auth::user()->hasRole('administrator')){
             return view('dasbor.index');
 
-        } elseif(Auth::user()->hasRole('guest')){
+        } elseif(Auth::user()->hasRole('pegawai')){
             return view('dasbor.index');
         }
     }

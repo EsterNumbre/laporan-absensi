@@ -30,10 +30,12 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
 
+        // pagination
+        Paginator::useBootstrap();
+
         if(config('app.env') === 'production') {
             URL::forceScheme('https');
         }
-        
 
         view()->share([
 

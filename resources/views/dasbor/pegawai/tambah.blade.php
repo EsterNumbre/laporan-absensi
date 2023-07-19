@@ -49,6 +49,14 @@
                                                 <div class="mb-3">
                                                     <label for="nip" class="form-label">NIP</label>
                                                     <input type="text" name="nip" id="nip" value="{{ old('nip') ?? ''  }}" class="form-control rounded-0">
+                                                    
+                                                    @if ($errors->has('nip'))
+                                                        <span class="text-danger" role="alert">
+                                                            <small class="pt-1 d-block">
+                                                                <i class="fe-alert-triangle mr-1"></i> {{ $errors->first('nip') }}
+                                                            </small>
+                                                        </span>
+                                                    @endif <!-- error message end -->
                                                 </div>
                                                 <!-- form group end -->
 
@@ -56,15 +64,65 @@
                                                 <div class="mb-3">
                                                     <label for="no_hp" class="form-label">Nomor HP</label>
                                                     <input type="text" name="no_hp" id="no_hp" value="{{ old('no_hp') ?? ''  }}" class="form-control rounded-0">
+                                                    
+                                                    @if ($errors->has('no_hp'))
+                                                        <span class="text-danger" role="alert">
+                                                            <small class="pt-1 d-block">
+                                                                <i class="fe-alert-triangle mr-1"></i> {{ $errors->first('no_hp') }}
+                                                            </small>
+                                                        </span>
+                                                    @endif <!-- error message end -->
                                                 </div>
                                                 <!-- form group end -->
 
                                                 <!-- form group start -->
                                                 <div class="mb-3">
-                                                    <label for="alamat_email" class="form-label">Alamat Email</label>
-                                                    <input type="text" name="alamat_email" id="alamat_email" value="{{ old('alamat_email') ?? '' }}" class="form-control rounded-0">
+                                                    <label for="email" class="form-label">Alamat Email</label>
+                                                    <input type="email" name="email" id="email" value="{{ old('email') ?? '' }}" class="form-control rounded-0">
+                                                    
+                                                    @if ($errors->has('email'))
+                                                        <span class="text-danger" role="alert">
+                                                            <small class="pt-1 d-block">
+                                                                <i class="fe-alert-triangle mr-1"></i> {{ $errors->first('email') }}
+                                                            </small>
+                                                        </span>
+                                                    @endif <!-- error message end -->
                                                 </div>
                                                 <!-- form group end -->
+                                                    
+                                                <h5 class="p-2 mb-3 bg-light"><i class="fa-solid fa-key"></i> Kata Sandi</h5>
+
+                                                <!-- form group start -->
+                                                <div class="mb-3">
+                                                    <label for="password" class="form-label">Kata Sandi</label>
+                                                    <input type="text" name="password" id="password" value="{{ old('password') ?? '' }}" class="form-control rounded-0">
+                                                
+                                                    @if ($errors->has('password'))
+                                                        <span class="text-danger" role="alert">
+                                                            <small class="pt-1 d-block">
+                                                                <i class="fe-alert-triangle mr-1"></i> {{ $errors->first('password') }}
+                                                            </small>
+                                                        </span>
+                                                    @endif <!-- error message end -->
+                                                </div>
+                                                <!-- form group end -->
+
+                                                <!-- form group start -->
+                                                <div class="mb-3">
+                                                    <label for="password_confirmation" class="form-label">Konfirmasi Kata Sandi</label>
+                                                    <input type="text" name="password_confirmation" id="password_confirmation" value="{{ old('password_confirmation') ?? '' }}" class="form-control rounded-0">
+                                                
+                                                    @if ($errors->has('password_confirmation'))
+                                                        <span class="text-danger" role="alert">
+                                                            <small class="pt-1 d-block">
+                                                                <i class="fe-alert-triangle mr-1"></i> {{ $errors->first('password_confirmation') }}
+                                                            </small>
+                                                        </span>
+                                                    @endif <!-- error message end -->
+                                                </div>
+                                                <!-- form group end -->
+                                                
+                                                    
 
                                                 <!-- form group start -->
                                                 <div class="mb-3">
@@ -100,27 +158,7 @@
                                                 <!-- form group end -->
 
                                             </div>
-
-                                            <div class="row">
-                                                <div class="col-md-6">
-                                                    <h5 class="p-2 mb-3 bg-light"><i class="fa-solid fa-key"></i> Kata Sandi</h5>
-
-                                                    <!-- form group start -->
-                                                    <div class="mb-3">
-                                                        <label for="kata_sandi" class="form-label">Kata Sandi</label>
-                                                        <input type="text" name="kata_sandi" id="kata_sandi" value="{{ old('kata_sandi') ?? '' }}" class="form-control rounded-0">
-                                                    </div>
-                                                    <!-- form group end -->
-
-                                                    <!-- form group start -->
-                                                    <div class="mb-3">
-                                                        <label for="konfirmasi_kata_sandi" class="form-label">Konfirmasi Kata Sandi</label>
-                                                        <input type="text" name="konfirmasi_kata_sandi" id="konfirmasi_kata_sandi" value="{{ old('konfirmasi_kata_sandi') ?? '' }}" class="form-control rounded-0">
-                                                    </div>
-                                                    <!-- form group end -->
-
-                                                </div>
-                                            </div>
+                                            
                                         </div>
                                         <!-- .row end -->
                                     </div>
