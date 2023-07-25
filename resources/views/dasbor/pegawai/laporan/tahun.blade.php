@@ -19,51 +19,51 @@
 
                                     <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolorem amet, commodi hic nam nemo perferendis officia iste. Vel, rem odit.</p>
 
-                                    <a href="{{ url(Request::segment(1).'/'.Request::segment(2).'/'.Request::segment(3).'/'.Request::segment(4).'/januari') }}" class="btn btn-dark rounded-0">
+                                    <a href="{{ url(Request::segment(1).'/'.Request::segment(2).'/'.Request::segment(3).'/'.Request::segment(4).'/01') }}" class="btn btn-dark rounded-0">
                                         <i class="fa-solid fa-bookmark"></i> Januari
                                     </a>
 
-                                    <a href="{{ url(Request::segment(1).'/'.Request::segment(2).'/'.Request::segment(3).'/'.Request::segment(4).'/Februari') }}" class="btn btn-dark rounded-0">
+                                    <a href="{{ url(Request::segment(1).'/'.Request::segment(2).'/'.Request::segment(3).'/'.Request::segment(4).'/02') }}" class="btn btn-dark rounded-0">
                                         <i class="fa-solid fa-bookmark"></i> Februari
                                     </a>
 
-                                    <a href="{{ url(Request::segment(1).'/'.Request::segment(2).'/'.Request::segment(3).'/'.Request::segment(4).'/Maret') }}" class="btn btn-dark rounded-0">
+                                    <a href="{{ url(Request::segment(1).'/'.Request::segment(2).'/'.Request::segment(3).'/'.Request::segment(4).'/03') }}" class="btn btn-dark rounded-0">
                                         <i class="fa-solid fa-bookmark"></i> Maret
                                     </a>
 
-                                    <a href="{{ url(Request::segment(1).'/'.Request::segment(2).'/'.Request::segment(3).'/'.Request::segment(4).'/April') }}" class="btn btn-dark rounded-0">
+                                    <a href="{{ url(Request::segment(1).'/'.Request::segment(2).'/'.Request::segment(3).'/'.Request::segment(4).'/04') }}" class="btn btn-dark rounded-0">
                                         <i class="fa-solid fa-bookmark"></i> April
                                     </a>
 
-                                    <a href="{{ url(Request::segment(1).'/'.Request::segment(2).'/'.Request::segment(3).'/'.Request::segment(4).'/Mei') }}" class="btn btn-dark rounded-0">
+                                    <a href="{{ url(Request::segment(1).'/'.Request::segment(2).'/'.Request::segment(3).'/'.Request::segment(4).'/05') }}" class="btn btn-dark rounded-0">
                                         <i class="fa-solid fa-bookmark"></i> Mei
                                     </a>
 
-                                    <a href="{{ url(Request::segment(1).'/'.Request::segment(2).'/'.Request::segment(3).'/'.Request::segment(4).'/Juni') }}" class="btn btn-dark rounded-0">
+                                    <a href="{{ url(Request::segment(1).'/'.Request::segment(2).'/'.Request::segment(3).'/'.Request::segment(4).'/06') }}" class="btn btn-dark rounded-0">
                                         <i class="fa-solid fa-bookmark"></i> Juni
                                     </a>
 
-                                    <a href="{{ url(Request::segment(1).'/'.Request::segment(2).'/'.Request::segment(3).'/'.Request::segment(4).'/Juli') }}" class="btn btn-dark rounded-0">
+                                    <a href="{{ url(Request::segment(1).'/'.Request::segment(2).'/'.Request::segment(3).'/'.Request::segment(4).'/07') }}" class="btn btn-dark rounded-0">
                                         <i class="fa-solid fa-bookmark"></i> Juli
                                     </a>
 
-                                    <a href="{{ url(Request::segment(1).'/'.Request::segment(2).'/'.Request::segment(3).'/'.Request::segment(4).'/Agustus') }}" class="btn btn-dark rounded-0">
+                                    <a href="{{ url(Request::segment(1).'/'.Request::segment(2).'/'.Request::segment(3).'/'.Request::segment(4).'/08') }}" class="btn btn-dark rounded-0">
                                         <i class="fa-solid fa-bookmark"></i> Agustus
                                     </a>
 
-                                    <a href="{{ url(Request::segment(1).'/'.Request::segment(2).'/'.Request::segment(3).'/'.Request::segment(4).'/September') }}" class="btn btn-dark rounded-0">
+                                    <a href="{{ url(Request::segment(1).'/'.Request::segment(2).'/'.Request::segment(3).'/'.Request::segment(4).'/09') }}" class="btn btn-dark rounded-0">
                                         <i class="fa-solid fa-bookmark"></i> September
                                     </a>
 
-                                    <a href="{{ url(Request::segment(1).'/'.Request::segment(2).'/'.Request::segment(3).'/'.Request::segment(4).'/Oktober') }}" class="btn btn-dark rounded-0">
+                                    <a href="{{ url(Request::segment(1).'/'.Request::segment(2).'/'.Request::segment(3).'/'.Request::segment(4).'/10') }}" class="btn btn-dark rounded-0">
                                         <i class="fa-solid fa-bookmark"></i> Oktober
                                     </a>
 
-                                    <a href="{{ url(Request::segment(1).'/'.Request::segment(2).'/'.Request::segment(3).'/'.Request::segment(4).'/November') }}" class="btn btn-dark rounded-0">
+                                    <a href="{{ url(Request::segment(1).'/'.Request::segment(2).'/'.Request::segment(3).'/'.Request::segment(4).'/11') }}" class="btn btn-dark rounded-0">
                                         <i class="fa-solid fa-bookmark"></i> November
                                     </a>
 
-                                    <a href="{{ url(Request::segment(1).'/'.Request::segment(2).'/'.Request::segment(3).'/'.Request::segment(4).'/Desember') }}" class="btn btn-dark rounded-0">
+                                    <a href="{{ url(Request::segment(1).'/'.Request::segment(2).'/'.Request::segment(3).'/'.Request::segment(4).'/12') }}" class="btn btn-dark rounded-0">
                                         <i class="fa-solid fa-bookmark"></i> Desember
                                     </a>
 

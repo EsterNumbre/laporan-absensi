@@ -211,8 +211,7 @@ class PegawaiController extends Controller
     // LAPORAN
     public function laporan()
     {
-            
-       
+                   
         return view('dasbor.pegawai.laporan.index');
 
     }
@@ -229,7 +228,10 @@ class PegawaiController extends Controller
         $tahun = $tahun;
         $bulan = $bulan;
         $no = 0;
-        $logs = Logs::where('user_id', Auth::user()->id)->get();
+        $logs = Logs::where('user_id', Auth::user()->id)
+                        ->whereYear('created_at', $tahun)
+                        ->whereMonth('created_at', $bulan)
+                        ->get();
         return view('dasbor.pegawai.laporan.bulan', compact('tahun','bulan', 'no', 'logs'));
 
     }

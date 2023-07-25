@@ -88,6 +88,24 @@ class LogsSeeder extends Seeder
                 'created_at' => '2023-07-06 08:00:00',
                 'keterangan' => 'Hadir di kantor untuk mengikuti beberapa agenda dan juga menyelesaikan pekerjaan.',
             ]
-        ]);
+        ]);      
+
+        Logs::insert([
+            [
+                'user_id' => 3,
+                'status' => 'Masuk',
+                'created_at' => '2023-07-24 08:00:00',
+                'keterangan' => 'Hadir di kantor untuk mengikuti beberapa agenda dan juga menyelesaikan pekerjaan.',
+            ]
+        ]);  
+
+        // Logs::insert([
+        //     [
+        //         'user_id' => 3,
+        //         'status' => 'Masuk',
+        //         'created_at' => '2023-07-25 08:00:00',
+        //         'keterangan' => 'Hadir di kantor untuk mengikuti beberapa agenda dan juga menyelesaikan pekerjaan.',
+        //     ]
+        // ]);
     }
 }
