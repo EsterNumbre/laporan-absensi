@@ -10,6 +10,8 @@ use Illuminate\Support\Facades\Route;
 | pegawai
 |--------------------------------------------------------------------------
 */
+
+// ROLE ADMINISTRATOR
 Route::group(['middleware' => ['role:administrator']], function () { 
 
     Route::controller(PegawaiController::class)->group(function(){
@@ -34,6 +36,25 @@ Route::group(['middleware' => ['role:administrator']], function () {
 
         // proses hapus / destroy
         Route::delete('pegawai/{id}','destroy');
+
+
+    });
+});
+
+// ROLE PEGAWAI
+
+Route::group(['middleware' => ['role:pegawai']], function () { 
+
+    Route::controller(PegawaiController::class)->group(function(){
+        
+        // LAPORAN
+        Route::get('pegawai/laporan/', 'laporan');
+
+        // TAHUN
+        Route::get('pegawai/laporan/{tahun}', 'tahun');
+
+        // BULAN
+        Route::get('pegawai/laporan/{tahun}/{bulan}', 'bulan');
 
     });
 });

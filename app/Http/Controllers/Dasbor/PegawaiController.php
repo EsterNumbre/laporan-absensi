@@ -4,10 +4,12 @@ namespace App\Http\Controllers\Dasbor;
 use App\Http\Controllers\Controller;
 use App\Models\Pegawai;
 use App\Models\User;
+use App\Models\Logs;
 use Spatie\Permission\Models\Role;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Auth;
 
 class PegawaiController extends Controller
 {
@@ -204,4 +206,32 @@ class PegawaiController extends Controller
         alert()->success('Terhapus!', 'Data sudah terhapus.')->autoclose(1100);
         return redirect()->back();
     }
+
+
+    // LAPORAN
+    public function laporan()
+    {
+            
+       
+        return view('dasbor.pegawai.laporan.index');
+
+    }
+
+    public function tahun($tahun)
+    {            
+        $tahun = $tahun;
+        return view('dasbor.pegawai.laporan.tahun', compact('tahun'));
+
+    }
+
+    public function bulan($tahun, $bulan)
+    {            
+        $tahun = $tahun;
+        $bulan = $bulan;
+        $no = 0;
+        $logs = Logs::where('user_id', Auth::user()->id)->get();
+        return view('dasbor.pegawai.laporan.bulan', compact('tahun','bulan', 'no', 'logs'));
+
+    }
+
 }
