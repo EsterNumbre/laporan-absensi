@@ -11,7 +11,7 @@
             <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                 <li class="nav-item">
                     <span class="text-light nav-link">
-                        Selamat datang <span class="fw-bold">{{ Auth::user()->nama_lengkap ?? '' }}</span> <i class="text-warning">[ id: {{ Auth::user()->id ?? '' }} ]</i>
+                        Selamat datang <span class="fw-bold">{{ Auth::user()->nama_lengkap ?? '' }}</span> 
                     </span>
                 </li>
                 <li class="nav-item">
