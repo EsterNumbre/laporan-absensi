@@ -15,14 +15,13 @@
                                 <div class="card-body">
                                     <h3>{{ Str::title(Request::segment(3)) }} Tahun {{ Str::title(Request::segment(4)) }} Bulan  {{ Str::title(Request::segment(5)) }}</h3>
                                     <p class="text-muted">Menampilkan laporan absensi pegawai pada tahun {{ Request::segment(4) }} Bulan  {{ Str::title(Request::segment(5)) }}</p>
-
+                                    
 
                                     <div class="table-responsive">
                                         <table class="table table-hover table-striped">
                                             <thead>
                                                 <tr>
                                                     <th>#</th>
-                                                    <th>Nama Pegawai</th>
                                                     <th>Tanggal</th>
                                                     <th>Jam</th>
                                                     <th>Status</th>
@@ -35,25 +34,24 @@
 
                                                 <tr>
                                                     <td>{{ ++$no }}</td>
-                                                    <td>{{ ($log->pegawai->nama_lengkap) }}</td>
                                                     <td>{{ $log->created_at->format('Y-m-d') ?? '' }}</td>
                                                     <td>{{ $log->created_at->format('h:i:s') ?? '' }}</td>
                                                     <td>{{ $log->status ?? '' }}</td>
                                                     <td>{{ $log->keterangan ?? '' }}</td>
                                                     <td>
-
+                                                        
                                                     </td>
                                                 </tr>
-
+                                                    
                                                 @empty
-
+                                                    
                                                 @endforelse
-
+                                                
                                             </tbody>
                                         </table>
                                     </div>
 
-
+                                    
 
                                     {{-- <p>
                                         {{ now() }} | {{ now()->month }}

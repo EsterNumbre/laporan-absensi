@@ -13,7 +13,7 @@
                         <div class="col">
                             <div class="card rounded-0">
                                 <div class="card-body">
-                                    <h3>{{ Str::title(Request::segment(3)) }} {{ Str::title(Request::segment(2)) }}</h3>
+                                    <h3>{{ Str::title(Request::segment(2)) }} {{ Str::title(Request::segment(3)) }} </h3>
                                     <p class="text-muted">Menampilkan semua data {{ Request::segment(3) }} per tahun.</p>
 
 

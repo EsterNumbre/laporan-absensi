@@ -6,7 +6,7 @@
             <a href="{{ url('dasbor') }}" class="list-group-item list-group-item-action @if(Request::segment(2) == '') bg-primary text-light @endif">
                 <i class="fa-solid fa-dashboard"></i> Dasbor
             </a>
-            <a href="{{ url('dasbor/laporan') }}" class="list-group-item list-group-item-action @if(Request::segment(2) == 'kehadiran') bg-primary text-light @endif">
+            <a href="{{ route('kehadiran.laporan') }}" class="list-group-item list-group-item-action @if(Request::segment(2) == 'laporan') bg-primary text-light @endif">
                 <i class="fa-solid fa-table"></i> Laporan
             </a>
              <a href="{{ url('dasbor/pegawai') }}" class="list-group-item list-group-item-action @if(Request::segment(2) == 'pegawai') bg-primary text-light @endif">

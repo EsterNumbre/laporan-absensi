@@ -13,7 +13,7 @@
                             <div class="card shadow-sm rounded-0">
                                 <div class="card-body">
                                     <h3>Dasbor {{ Str::title(implode(",",auth()->user()->roles()->pluck('display_name')->toArray())) }} </h3>
-                                    <p class="text-muted">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Error soluta illum asperiores at modi eos.</p>
+                                    {{-- <p class="text-muted">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Error soluta illum asperiores at modi eos.</p> --}}
                                 </div>
                             </div>
                         </div>
@@ -59,7 +59,7 @@
                     <!-- .row end -->
                     @elseif (auth()->user()->hasRole('pegawai'))
 
-                    
+
 
                     <div class="row mb-3">
                         <div class="col-md-4">
@@ -70,32 +70,99 @@
 
                                     <p class="text-muted">Daftar log atau catatan absensi bulan ini</p>
 
-                                    
+
                                     @if($todayLog != NULL)
-                                        <a href="" class="btn btn-sm btn-primary rounded-0">
-                                            <i class="fa-solid fa-pencil"></i>
+                                         <!-- form start -->
+                                         <form action="{{route('kehadiran.edit',$todayLog->id)}}" method="post">
+                                            @csrf
+                                            @method('put')
+
+                                            <div class="mb-3">
+                                                <label for="" class="form-label">Status</label>
+                                                <select name="status" id="" class="form-select rounded-0" required>
+                                                    <option value="Masuk" @if($todayLog->status == 'Masuk') selected @endif >Masuk</option>
+                                                    <option value="Izin"  @if($todayLog->status == 'Izin') selected @endif>Izin</option>
+                                                </select>
+                                            </div>
+                                            <!-- input group end -->
+                                             @if ($errors->has('status'))
+                                             <span class="text-danger" role="alert">
+                                                 <small class="pt-1 d-block">
+                                                     <i class="fe-alert-triangle mr-1"></i> {{ $errors->first('status') }}
+                                                 </small>
+                                             </span>
+                                             @endif <!-- error message end -->
+
+                                            <div class="mb-3">
+                                                <label for="" class="form-label">Keterangan</label>
+                                                <textarea name="keterangan" id="" cols="30" rows="3" class="form-control rounded-0" required name="keterangan">{{$todayLog->keterangan}}</textarea>
+                                            </div>
+                                            <!-- input group end -->
+                                            @if ($errors->has('keterangan'))
+                                            <span class="text-danger" role="alert">
+                                                <small class="pt-1 d-block">
+                                                    <i class="fe-alert-triangle mr-1"></i> {{ $errors->first('keterangan') }}
+                                                </small>
+                                            </span>
+                                            @endif <!-- error message end -->
+
+                                            <div class="mb-3">
+                                                <label for="" class="form-label">Tanggal : </label>
+                                                {{ $todayLog->created_at->format('d-m-Y') }}
+                                            </div>
+                                            <!-- input group end -->
+
+                                            <div class="mb-3">
+                                                <label for="" class="form-label">Jam : </label>
+                                                {{ $todayLog->created_at->format('h:i:s') }}
+                                            </div>
+                                            <!-- input group end -->
+
+                                            <button class="btn btn-primary rounded-0 fw-bold w-100">
+                                                <i class="fa-solid fa-pencil"></i> Ubah
+                                            </button>
+                                            <!-- button end -->
+
+                                        </form>
+                                        <!-- form end -->
+
+
                                         </a>
-                                    @else 
+                                    @else
 
                                      <!-- form start -->
-                                     <form action="" action="post">
+                                     <form action="{{route('kehadiran.post')}}" method="post">
                                         @csrf
 
                                         <div class="mb-3">
                                             <label for="" class="form-label">Status</label>
-                                            <select name="" id="" class="form-select rounded-0" required>
+                                            <select name="status" id="" class="form-select rounded-0" required>
                                                 <option value="" selected hidden></option>
                                                 <option value="Masuk">Masuk</option>
                                                 <option value="Izin">Izin</option>
                                             </select>
                                         </div>
                                         <!-- input group end -->
+                                         @if ($errors->has('status'))
+                                         <span class="text-danger" role="alert">
+                                             <small class="pt-1 d-block">
+                                                 <i class="fe-alert-triangle mr-1"></i> {{ $errors->first('status') }}
+                                             </small>
+                                         </span>
+                                         @endif <!-- error message end -->
 
                                         <div class="mb-3">
                                             <label for="" class="form-label">Keterangan</label>
-                                            <textarea name="" id="" cols="30" rows="3" class="form-control rounded-0" required name="keterangan"></textarea>
+                                            <textarea name="keterangan" id="" cols="30" rows="3" class="form-control rounded-0" required name="keterangan"></textarea>
                                         </div>
                                         <!-- input group end -->
+                                        @if ($errors->has('keterangan'))
+                                        <span class="text-danger" role="alert">
+                                            <small class="pt-1 d-block">
+                                                <i class="fe-alert-triangle mr-1"></i> {{ $errors->first('keterangan') }}
+                                            </small>
+                                        </span>
+                                        @endif <!-- error message end -->
 
                                         <div class="mb-3">
                                             <label for="" class="form-label">Tanggal : </label>
@@ -119,7 +186,7 @@
 
 
                                     @endif
-                                   
+
 
                                 </div>
                             </div>
@@ -130,7 +197,7 @@
                                 <div class="card-body">
 
                                     <h5>Daftar logs / catatan bulan ini</h5>
-                                    
+
                                     <div class="table-responsive">
                                         <table class="table table-hover table-striped">
                                             <thead>
@@ -160,14 +227,14 @@
                                                                 <i class="fa-solid fa-pencil"></i>
                                                             </a>
                                                         @endif
-                                                        
+
                                                     </td>
                                                 </tr>
-                                                    
+
                                                 @empty
-                                                    
+
                                                 @endforelse
-                                                
+
                                             </tbody>
                                         </table>
                                     </div>
